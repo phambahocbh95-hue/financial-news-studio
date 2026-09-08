@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial News Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        
+        /* N?n lu?i chuy?n d?ng */
+        .grid-bg {
+            background-color: #050c24;
+            background-image: 
+                linear-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 64, 175, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridMove 20s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        /* Hi?u ?ng tru?t t? du?i lên */
+        @keyframes slideUp {
+            0% { transform: translateY(100%); opacity: 0; }
+            15% { transform: translateY(0); opacity: 1; }
+            85% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+        .slide-up { animation: slideUp 8s ease-in-out forwards; }
+
+        /* Hi?u ?ng sáng vi?n */
+        .glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.35); }
+        .glow-gold { box-shadow: 0 0 30px rgba(234, 179, 8, 0.35); }
+        .glow-red { box-shadow: 0 0 30px rgba(220, 38, 38, 0.35); }
+
+        /* Nút chuyên m?c */
+        .tab-active { background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: white; }
+        
+        /* Thanh ti?n trình */
+        .progress-bar { transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="grid-bg min-h-screen text-white">
+    <div class="container mx-auto px-4 py-6 max-w-7xl">
+        <!-- ===== TIÊU Ð? ===== -->
+        <header class="text
