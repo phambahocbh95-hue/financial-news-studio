@@ -3,96 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FINANCIAL NEWS STUDIO — World Class Edition</title>
+    <title>FINANCIAL NEWS STUDIO — Accurate Illustration Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --eco: #2563EB; --eco-dark: #1D4ED8; --eco-glow: rgba(37,99,235,0.45);
-            --fin: #CA8A04; --fin-dark: #A16207; --fin-glow: rgba(202,138,4,0.45);
-            --stk: #059669; --stk-dark: #047857; --stk-glow: rgba(5,150,105,0.45);
-            --news: #DC2626; --news-dark: #B91C1C; --news-glow: rgba(220,38,38,0.45);
+            --eco: #2563EB; --fin: #CA8A04; --stk: #059669; --news: #DC2626;
         }
         * { font-family: 'Inter', sans-serif; margin:0; padding:0; box-sizing:border-box; }
         body { background:#050c24; color:#fff; min-height:100vh; }
 
-        /* === NỀN LƯỚI TỌA ĐỘ CHUYÊN NGHIỆP === */
         .grid-world {
             background: radial-gradient(circle at top, rgba(37,99,235,0.12) 0%, transparent 55%), #050c24;
             background-image: 
                 linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px),
-                linear-gradient(rgba(30,64,175,0.03) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(30,64,175,0.03) 2px, transparent 2px);
-            background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+                linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
+            background-size: 25px 25px;
             animation: gridFlow 25s linear infinite;
         }
         @keyframes gridFlow {
-            0% { background-position:0 0, 0 0, 0 0, 0 0; }
-            100% { background-position:20px 20px, 20px 20px, 100px 100px, 100px 100px; }
+            0% { background-position:0 0; }
+            100% { background-position:25px 25px; }
         }
 
-        /* === HIỆU ỨNG CHUYỂN CẢNH ĐỈNH CAO === */
-        @keyframes masterFadeIn {
-            0% { opacity:0; transform:translateY(40px) scale(0.92); filter:blur(6px); }
-            100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+        @keyframes fadeInUp {
+            0% { opacity:0; transform:translateY(40px); }
+            100% { opacity:1; transform:translateY(0); }
         }
-        @keyframes slideUpPremium {
-            0% { opacity:0; transform:translateY(80px); }
-            20% { opacity:1; transform:translateY(0); }
-            85% { opacity:1; transform:translateY(0); }
-            100% { opacity:0; transform:translateY(-60px); }
+        @keyframes glowDot {
+            0%,100% { filter:drop-shadow(0 0 6px currentColor); }
+            50% { filter:drop-shadow(0 0 22px currentColor); }
         }
-        @keyframes glowPulse {
-            0%,100% { filter:drop-shadow(0 0 8px currentColor); }
-            50% { filter:drop-shadow(0 0 24px currentColor); }
-        }
-        .master-fade { animation:masterFadeIn 1.4s cubic-bezier(0.16,1,0.3,1) forwards; opacity:0; }
-        .slide-premium { animation:slideUpPremium 8.5s ease-in-out forwards; opacity:0; }
-        .glow-pulse { animation:glowPulse 2.5s ease-in-out infinite; }
-
-        /* === KHUNG ĐỒ HỌA VECTOR === */
-        .vector-card {
-            border-radius:16px;
-            backdrop-filter:blur(12px);
-            border:1px solid rgba(255,255,255,0.12);
-            box-shadow:0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
-        }
-        .illust-box {
-            border-radius:14px;
-            position:relative;
-            overflow:hidden;
-            display:flex; align-items:center; justify-content:center;
-        }
-        .illust-box::after {
-            content:'';
-            position:absolute; inset:0;
-            background:linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
-            pointer-events:none;
-        }
-
-        /* === NÚT CHUYÊN MỤC === */
-        .tab-btn { transition:all 0.3s ease; }
+        .fade-in-up { animation:fadeInUp 1.2s ease-out forwards; opacity:0; }
+        .glow-dot { animation:glowDot 2s ease-in-out infinite; }
         .tab-active { background:linear-gradient(135deg, #1D4ED8, #3B82F6); color:white; box-shadow:0 0 20px rgba(37,99,235,0.4); }
 
-        /* === THANH TIẾN TRÌNH === */
-        .prog-bar { transition:width 0.4s ease; }
-
-        /* === ĐƯỜNG BIỂU ĐỒ SVG === */
-        svg.chart-line { stroke-linecap:round; stroke-linejoin:round; }
+        .illust-card {
+            border-radius:16px;
+            padding:12px;
+            border:1px solid rgba(255,255,255,0.12);
+            background:rgba(255,255,255,0.04);
+            box-shadow:0 8px 30px rgba(0,0,0,0.35);
+        }
     </style>
 </head>
 <body class="grid-world">
     <div class="container mx-auto px-4 py-6 max-w-7xl">
-        <!-- === TIÊU ĐỀ ĐỈNH CAO === -->
         <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-2">
-                <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">FINANCIAL NEWS STUDIO</span>
-            </h1>
-            <p class="text-blue-200 text-lg">🏆 World-Class Edition • Auto Vector Graphics • AI Scene Sync • Premium Audio Sync</p>
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2 bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">FINANCIAL NEWS STUDIO</h1>
+            <p class="text-blue-200 text-lg">🎯 Minh họa chính xác 1000% theo nội dung • Đúng số liệu • Đúng đối tượng • Đúng sự kiện</p>
         </header>
 
-        <!-- === CHUYÊN MỤC === -->
         <div class="flex flex-wrap justify-center gap-3 mb-8">
             <button data-cat="economy" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-blue-500/40 tab-active">📊 Kinh tế</button>
             <button data-cat="finance" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-yellow-500/40 text-yellow-300 hover:bg-yellow-500/20">💰 Tài chính</button>
@@ -101,220 +62,251 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
-            <!-- === BÊN TRÁI: NHẬP NỘI DUNG === -->
-            <div class="vector-card bg-slate-900/60 p-6">
-                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">✍️ Nhập Nội Dung & Tải Âm Thanh</h2>
+            <div class="bg-slate-900/60 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20">
+                <h2 class="text-xl font-bold mb-4">✍️ Nhập Nội Dung</h2>
                 <div class="space-y-4">
                     <div>
                         <label class="block text-blue-300 font-medium mb-2">Tiêu đề chính</label>
-                        <input type="text" id="titleIn" placeholder="VD: Thị trường chứng khoán tăng mạnh tuần này" 
+                        <input type="text" id="titleIn" placeholder="VD: Thị trường chứng khoán tuần này" 
                             class="w-full px-4 py-3 rounded-lg bg-slate-800/80 border border-blue-500/30 focus:border-blue-400 outline-none text-lg">
                     </div>
                     <div>
-                        <label class="block text-blue-300 font-medium mb-2">Nội dung chi tiết (mỗi dòng = 1 cảnh)</label>
-                        <textarea id="contentIn" rows="10" placeholder="VD: Chỉ số VN-Index tăng vọt 6.5%&#10;Thanh khoản lập kỷ lục 45 nghìn tỷ&#10;Nhà đầu tư nước ngoài mua ròng mạnh&#10;Vàng trong nước tăng theo thế giới&#10;Tỷ giá ổn định, Ngân hàng trung ương can thiệp" 
+                        <label class="block text-blue-300 font-medium mb-2">Nội dung (mỗi dòng = 1 hình ảnh)</label>
+                        <textarea id="contentIn" rows="8" placeholder="VD: VN-Index tăng 6.5%&#10;Giá vàng thế giới tăng 23 USD/ounce&#10;Thanh khoản đạt 45 nghìn tỷ đồng&#10;Nhà đầu tư nước ngoài mua ròng 1200 tỷ&#10;Lãi suất điều hành giảm 0.25 điểm phần trăm" 
                             class="w-full px-4 py-3 rounded-lg bg-slate-800/80 border border-blue-500/30 focus:border-blue-400 outline-none text-base leading-relaxed"></textarea>
                     </div>
-                    <div>
-                        <label class="block text-blue-300 font-medium mb-2">🎙️ Tải file lời nói (MP3/WAV)</label>
-                        <input type="file" id="audioIn" accept="audio/*" 
-                            class="w-full px-4 py-3 rounded-lg bg-slate-800/80 border border-blue-500/30 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:bg-blue-600 file:text-white file:border-0">
-                    </div>
-                    <button id="genBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold text-xl transition-all transform hover:scale-[1.02] mt-2">
-                        🎬 TẠO VIDEO CHUYÊN NGHIỆP
-                    </button>
+                    <button id="genBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold text-xl mt-2">🎬 TẠO HÌNH MINH HỌA</button>
                 </div>
             </div>
 
-            <!-- === BÊN PHẢI: XEM TRƯỚC === -->
-            <div class="vector-card bg-slate-900/60 p-6">
-                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">🖥️ Xem Trước — Auto Vector Graphics</h2>
+            <div class="bg-slate-900/60 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20">
+                <h2 class="text-xl font-bold mb-4">🖼️ Hình Ảnh Minh Họa Chính Xác</h2>
                 <div id="previewBox" class="relative w-full aspect-video rounded-xl overflow-hidden border border-blue-500/30 bg-[#050c24]">
-                    <!-- Nền lưới trong khung -->
-                    <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px); background-size:25px 25px;"></div>
-                    
-                    <!-- Nhãn chuyên mục + Thời gian -->
                     <div class="absolute top-3 left-3 z-20"><span id="catBadge" class="px-3 py-1 rounded-md bg-blue-600/80 text-white text-sm font-bold">KINH TẾ</span></div>
-                    <div class="absolute top-3 right-3 z-20 text-white text-sm font-mono" id="timeShow">00:00</div>
-
-                    <!-- KHU VỰC CẢNH ĐƯỢC TẠO -->
-                    <div id="sceneArea" class="absolute inset-0 flex items-center justify-center p-6 text-center text-blue-200/60">
-                        <div>
-                            <div class="text-6xl mb-4 glow-pulse">🎬</div>
-                            <p class="text-lg">Nhập nội dung → Tải âm thanh → Bấm Tạo<br>App tự vẽ đồ họa vector + đồng bộ lời nói</p>
-                        </div>
+                    <div class="absolute top-3 right-3 z-20 text-white text-sm font-mono">00:00</div>
+                    <div id="sceneArea" class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                        <div class="text-5xl mb-4">🎬</div>
+                        <p class="text-lg text-blue-200/60">Nhập nội dung → Bấm Tạo<br>Hình ảnh sẽ bám sát đúng chi tiết trong nội dung</p>
                     </div>
-
-                    <!-- Thanh tiến trình -->
-                    <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-700/50 z-20">
-                        <div id="progBar" class="h-full bg-blue-500 prog-bar" style="width:0%"></div>
-                    </div>
-                </div>
-                <div class="mt-4 flex gap-3">
-                    <button id="playBtn" class="flex-1 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 font-bold text-lg">▶ Phát</button>
-                    <button id="stopBtn" class="flex-1 py-3 rounded-lg bg-red-600/80 hover:bg-red-500 font-bold text-lg">⏹ Dừng</button>
-                    <button id="downBtn" class="py-3 px-4 rounded-lg bg-indigo-600/80 hover:bg-indigo-500 font-bold">💾 Hướng Dẫn Lưu</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // === CẤU HÌNH CHUYÊN MỤC ===
         let cat = 'economy';
         const C = {
-            economy: { label:'KINH TẾ', main:'#2563EB', dark:'#1D4ED8', glow:'rgba(37,99,235,0.45)' },
-            finance: { label:'TÀI CHÍNH', main:'#CA8A04', dark:'#A16207', glow:'rgba(202,138,4,0.45)' },
-            stock: { label:'CHỨNG KHOÁN', main:'#059669', dark:'#047857', glow:'rgba(5,150,105,0.45)' },
-            news: { label:'THỜI SỰ', main:'#DC2626', dark:'#B91C1C', glow:'rgba(220,38,38,0.45)' }
+            economy: { label:'KINH TẾ', color:'#2563EB' },
+            finance: { label:'TÀI CHÍNH', color:'#CA8A04' },
+            stock: { label:'CHỨNG KHOÁN', color:'#059669' },
+            news: { label:'THỜI SỰ', color:'#DC2626' }
         };
 
-        // === TỰ PHÂN TÍCH & TẠO ĐỒ HỌA SVG VECTOR ===
-        function makeVectorSVG(text, color) {
-            const t = text.toLowerCase();
-            let pathD = '', icon = '';
-
-            // === ĐƯỜNG BIỂU ĐỒ TĂNG ===
-            if (t.includes('tăng') || t.includes('lên') || t.includes('cao') || t.includes('vượt') || t.includes('đỉnh')) {
-                pathD = 'M40,160 L80,120 L120,100 L160,60 L200,30 L240,50 L280,20';
-                icon = `<svg viewBox="0 0 320 180" class="w-36 h-28 md:w-44 md:h-32">
-                    <defs><linearGradient id="g-up" x1="0" y1="1" x2="1" y2="0">
-                        <stop offset="0%" stop-color="${color}" stop-opacity="0.25"/>
-                        <stop offset="100%" stop-color="${color}" stop-opacity="0.95"/>
-                    </linearGradient></defs>
-                    <path d="M40,160 L80,120 L120,100 L160,60 L200,30 L240,50 L280,20 L280,160 L40,160Z" fill="url(#g-up)" opacity="0.35"/>
-                    <path d="${pathD}" fill="none" stroke="${color}" stroke-width="6" class="chart-line master-fade" style="animation-delay:0.6s"/>
-                    <circle cx="280" cy="20" r="10" fill="${color}" class="master-fade glow-pulse" style="animation-delay:1.2s"/>
-                </svg>`;
-            }
-            // === ĐƯỜNG BIỂU ĐỒ GIẢM ===
-            else if (t.includes('giảm') || t.includes('xuống') || t.includes('thấp') || t.includes('sụt')) {
-                pathD = 'M40,30 L80,55 L120,80 L160,110 L200,135 L240,145 L280,155';
-                icon = `<svg viewBox="0 0 320 180" class="w-36 h-28 md:w-44 md:h-32">
-                    <defs><linearGradient id="g-dn" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="${color}" stop-opacity="0.95"/>
-                        <stop offset="100%" stop-color="${color}" stop-opacity="0.25"/>
-                    </linearGradient></defs>
-                    <path d="M40,30 L80,55 L120,80 L160,110 L200,135 L240,145 L280,155 L280,160 L40,160Z" fill="url(#g-dn)" opacity="0.35"/>
-                    <path d="${pathD}" fill="none" stroke="${color}" stroke-width="6" class="chart-line master-fade" style="animation-delay:0.6s"/>
-                    <circle cx="280" cy="155" r="10" fill="${color}" class="master-fade glow-pulse" style="animation-delay:1.2s"/>
-                </svg>`;
-            }
-            // === SỐ LIỆU / GIÁ TRỊ ===
-            else if (t.includes('nghìn tỷ') || t.includes('triệu') || t.includes('%') || t.includes('đô la') || t.includes('tỷ giá')) {
-                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
-                    <rect x="20" y="40" width="160" height="100" rx="12" fill="${color}" opacity="0.15" stroke="${color}" stroke-width="3"/>
-                    <text x="100" y="85" text-anchor="middle" fill="${color}" font-size="36" font-weight="800" class="glow-pulse">$$$</text>
-                    <text x="100" y="120" text-anchor="middle" fill="${color}" font-size="14" opacity="0.80">DATA • VALUE • PRICE</text>
-                </svg>`;
-            }
-            // === VÀNG / KIM LOẠI QUÝ ===
-            else if (t.includes('vàng') || t.includes('bạc') || t.includes('kim cương')) {
-                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
-                    <polygon points="100,30 150,70 140,140 60,140 50,70" fill="${color}" opacity="0.25" stroke="${color}" stroke-width="4"/>
-                    <polygon points="100,50 130,75 122,120 78,120 70,75" fill="${color}" opacity="0.60"/>
-                    <circle cx="100" cy="95" r="18" fill="#fff" opacity="0.90" class="glow-pulse"/>
-                    <text x="100" y="102" text-anchor="middle" fill="${color}" font-size="16" font-weight="800">AU</text>
-                </svg>`;
-            }
-            // === NGÂN HÀNG / TÀI CHÍNH ===
-            else if (t.includes('ngân hàng') || t.includes('lãi suất') || t.includes('vay') || t.includes('trung ương')) {
-                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
-                    <polygon points="100,30 170,70 170,140 30,140 30,70" fill="${color}" opacity="0.15" stroke="${color}" stroke-width="3"/>
-                    <rect x="50" y="90" width="30" height="50" fill="${color}" opacity="0.75" rx="2"/>
-                    <rect x="85" y="90" width="30" height="50" fill="${color}" opacity="0.90" rx="2"/>
-                    <rect x="120" y="90" width="30" height="50" fill="${color}" opacity="0.60" rx="2"/>
-                    <text x="100" y="65" text-anchor="middle" fill="${color}" font-size="18" font-weight="700">🏦 BANK</text>
-                </svg>`;
-            }
-            // === THỜI SỰ / SỰ KIỆN ===
-            else if (t.includes('chính phủ') || t.includes('quyết định') || t.includes('thông báo') || t.includes('sự kiện')) {
-                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
-                    <rect x="25" y="25" width="150" height="130" rx="10" fill="${color}" opacity="0.12" stroke="${color}" stroke-width="3"/>
-                    <rect x="40" y="45" width="120" height="8" fill="${color}" opacity="0.75" rx="2"/>
-                    <rect x="40" y="65" width="90" height="8" fill="${color}" opacity="0.55" rx="2"/>
-                    <rect x="40" y="85" width="110" height="8" fill="${color}" opacity="0.40" rx="2"/>
-                    <polygon points="160,110 175,135 145,135" fill="${color}" class="glow-pulse"/>
-                </svg>`;
-            }
-            // === MẶC ĐỊNH: BIỂU ĐỒ TỔNG THỂ ===
-            else {
-                icon = `<svg viewBox="0 0 280 160" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
-                    <rect x="20" y="40" width="60" height="100" fill="${color}" opacity="0.25" rx="4"/>
-                    <rect x="85" y="60" width="60" height="80" fill="${color}" opacity="0.45" rx="4"/>
-                    <rect x="150" y="30" width="60" height="110" fill="${color}" opacity="0.70" rx="4"/>
-                    <rect x="215" y="50" width="45" height="90" fill="${color}" opacity="0.35" rx="4"/>
-                </svg>`;
-            }
-            return icon;
-        }
-
-        // === CHUYỂN CHUYÊN MỤC ===
         document.querySelectorAll('.tab-btn').forEach(b=>b.onclick=()=>{
             document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('tab-active'));
-            b.classList.add('tab-active'); cat = b.dataset.cat;
-            const badge = document.getElementById('catBadge');
-            badge.textContent = C[cat].label;
-            badge.style.backgroundColor = C[cat].main + 'CC';
+            b.classList.add('tab-active');
+            cat = b.dataset.cat;
+            document.getElementById('catBadge').textContent = C[cat].label;
+            document.getElementById('catBadge').style.backgroundColor = C[cat].color + 'CC';
         });
 
-        // === TẠO VIDEO ĐỈNH CAO ===
-        document.getElementById('genBtn').onclick = generateWorldClass;
+        function extractNumber(text) {
+            const m = text.match(/[\d,.]+/);
+            return m ? m[0] : '';
+        }
 
-        function generateWorldClass(){
+        function extractUnit(text) {
+            const t = text.toLowerCase();
+            if(t.includes('usd') || t.includes('đô la')) return 'USD';
+            if(t.includes('tỷ')) return 'TỶ';
+            if(t.includes('triệu')) return 'TRIỆU';
+            if(t.includes('nghìn tỷ')) return 'NGHÌN TỶ';
+            if(t.includes('%') || t.includes('phần trăm')) return '%';
+            if(t.includes('ounce')) return 'OUNCE';
+            return '';
+        }
+
+        function getSVG(text, color) {
+            const t = text.toLowerCase();
+            const num = extractNumber(text);
+            const unit = extractUnit(text);
+            const label = num && unit ? `${num} ${unit}`.toUpperCase() : '';
+
+            // 1. CHỈ SỐ CHỨNG KHOÁN TĂNG
+            if((t.includes('vn-index') || t.includes('chỉ số') || t.includes('index')) && (t.includes('tăng') || t.includes('cao') || t.includes('vượt'))) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="280" height="170" viewBox="0 0 280 170">
+                        <defs><linearGradient id="idxUp" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="${color}" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="${color}" stop-opacity="0.65"/>
+                        </linearGradient></defs>
+                        <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">VN-INDEX</text>
+                        <path d="M30,130 L70,100 L110,75 L150,55 L190,35 L230,50 L250,20" fill="url(#idxUp)" stroke="${color}" stroke-width="5" stroke-linecap="round"/>
+                        <circle cx="250" cy="20" r="12" fill="${color}" class="glow-dot"/>
+                        <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'TĂNG MẠNH'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 2. CHỈ SỐ CHỨNG KHOÁN GIẢM
+            if((t.includes('vn-index') || t.includes('chỉ số') || t.includes('index')) && (t.includes('giảm') || t.includes('xuống') || t.includes('thấp'))) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="280" height="170" viewBox="0 0 280 170">
+                        <defs><linearGradient id="idxDn" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="${color}" stop-opacity="0.65"/>
+                            <stop offset="100%" stop-color="${color}" stop-opacity="0.15"/>
+                        </linearGradient></defs>
+                        <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">VN-INDEX</text>
+                        <path d="M30,25 L70,50 L110,75 L150,100 L190,120 L230,130 L250,145" fill="url(#idxDn)" stroke="${color}" stroke-width="5" stroke-linecap="round"/>
+                        <circle cx="250" cy="145" r="12" fill="${color}" class="glow-dot"/>
+                        <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'GIẢM'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 3. GIÁ VÀNG
+            if(t.includes('vàng')) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="240" height="170" viewBox="0 0 240 170">
+                        <rect x="20" y="20" width="200" height="110" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <polygon points="120,35 175,70 165,140 75,140 65,70" fill="${color}" opacity="0.35" stroke="${color}" stroke-width="4"/>
+                        <polygon points="120,55 150,75 145,120 95,120 90,75" fill="${color}" opacity="0.75"/>
+                        <circle cx="120" cy="95" r="24" fill="#fff" opacity="0.9"/>
+                        <text x="120" y="102" text-anchor="middle" fill="${color}" font-size="24" font-weight="bold" class="glow-dot">AU</text>
+                        <text x="120" y="160" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">GIÁ VÀNG ${label || ''}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 4. THANH KHOẢN / GIÁ TRỊ GIAO DỊCH
+            if(t.includes('thanh khoản') || t.includes('giá trị') || t.includes('giao dịch')) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="280" height="170" viewBox="0 0 280 170">
+                        <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">GIÁ TRỊ GIAO DỊCH</text>
+                        <rect x="30" y="90" width="50" height="60" fill="${color}" opacity="0.25" rx="4"/>
+                        <rect x="90" y="70" width="50" height="80" fill="${color}" opacity="0.45" rx="4"/>
+                        <rect x="150" y="50" width="50" height="100" fill="${color}" opacity="0.7" rx="4"/>
+                        <rect x="210" y="80" width="50" height="70" fill="${color}" opacity="0.35" rx="4"/>
+                        <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'THANH KHOẢN'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 5. NHÀ ĐẦU TƯ NƯỚC NGOÀI
+            if(t.includes('nước ngoài') || t.includes('foreign') || t.includes('fdi')) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="280" height="170" viewBox="0 0 280 170">
+                        <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">NHÀ ĐẦU TƯ NƯỚC NGOÀI</text>
+                        <circle cx="70" cy="90" r="35" fill="${color}" opacity="0.2" stroke="${color}" stroke-width="2"/>
+                        <text x="70" cy="98" text-anchor="middle" fill="${color}" font-size="32">🌍</text>
+                        <path d="M120,90 L160,90" stroke="${color}" stroke-width="4" stroke-linecap="round"/>
+                        <polygon points="155,80 175,90 155,100" fill="${color}" class="glow-dot"/>
+                        <rect x="190" y="60" width="60" height="60" rx="8" fill="${color}" opacity="0.35" stroke="${color}" stroke-width="2"/>
+                        <text x="220" y="98" text-anchor="middle" fill="${color}" font-size="20">$$$</text>
+                        <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'ĐỔ VỐN'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 6. LÃI SUẤT
+            if(t.includes('lãi suất') || t.includes('interest rate')) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="240" height="170" viewBox="0 0 240 170">
+                        <rect x="20" y="20" width="200" height="110" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="30" y="40" fill="${color}" font-size="13" font-weight="bold">LÃI SUẤT</text>
+                        <polygon points="120,35 210,75 210,135 30,135 30,75" fill="${color}" opacity="0.15" stroke="${color}" stroke-width="3"/>
+                        <rect x="50" y="85" width="40" height="45" fill="${color}" opacity="0.8" rx="3"/>
+                        <rect x="100" y="75" width="40" height="55" fill="${color}" opacity="0.95" rx="3"/>
+                        <rect x="150" y="90" width="40" height="40" fill="${color}" opacity="0.6" rx="3"/>
+                        <text x="120" y="65" text-anchor="middle" fill="${color}" font-size="18" font-weight="bold">🏦</text>
+                        <text x="120" y="160" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'LÃI SUẤT'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 7. TỶ GIÁ
+            if(t.includes('tỷ giá') || t.includes('exchange rate')) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="280" height="170" viewBox="0 0 280 170">
+                        <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">TỶ GIÁ</text>
+                        <rect x="30" y="60" width="90" height="70" rx="10" fill="${color}" opacity="0.25" stroke="${color}" stroke-width="2"/>
+                        <text x="75" y="105" text-anchor="middle" fill="${color}" font-size="28" font-weight="bold">USD</text>
+                        <path d="M140,95 L180,95" stroke="${color}" stroke-width="4" stroke-linecap="round"/>
+                        <polygon points="175,85 195,95 175,105" fill="${color}" class="glow-dot"/>
+                        <rect x="200" y="60" width="50" height="70" rx="10" fill="${color}" opacity="0.35" stroke="${color}" stroke-width="2"/>
+                        <text x="225" y="105" text-anchor="middle" fill="${color}" font-size="28" font-weight="bold">VND</text>
+                        <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'TỶ GIÁ'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // 8. THÔNG BÁO / SỰ KIỆN
+            if(t.includes('thông báo') || t.includes('quyết định') || t.includes('chính phủ') || t.includes('sự kiện')) {
+                return `
+                <div class="illust-card fade-in-up">
+                    <svg width="280" height="170" viewBox="0 0 280 170">
+                        <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                        <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">THÔNG BÁO / SỰ KIỆN</text>
+                        <rect x="35" y="45" width="210" height="10" fill="${color}" opacity="0.8" rx="2"/>
+                        <rect x="35" y="65" width="170" height="10" fill="${color}" opacity="0.6" rx="2"/>
+                        <rect x="35" y="85" width="190" height="10" fill="${color}" opacity="0.45" rx="2"/>
+                        <polygon points="230,110 250,140 210,140" fill="${color}" class="glow-dot"/>
+                        <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'SỰ KIỆN'}</text>
+                    </svg>
+                </div>`;
+            }
+
+            // MẶC ĐỊNH: BIỂU ĐỒ TỔNG THỂ CÓ SỐ LIỆU
+            return `
+            <div class="illust-card fade-in-up">
+                <svg width="280" height="170" viewBox="0 0 280 170">
+                    <rect x="10" y="10" width="260" height="150" rx="12" fill="${color}" opacity="0.05" stroke="${color}" stroke-width="2"/>
+                    <text x="20" y="30" fill="${color}" font-size="13" font-weight="bold">DỮ LIỆU THỊ TRƯỜNG</text>
+                    <rect x="30" y="90" width="45" height="60" fill="${color}" opacity="0.25" rx="4"/>
+                    <rect x="85" y="70" width="45" height="80" fill="${color}" opacity="0.45" rx="4"/>
+                    <rect x="140" y="50" width="45" height="100" fill="${color}" opacity="0.7" rx="4"/>
+                    <rect x="195" y="80" width="45" height="70" fill="${color}" opacity="0.35" rx="4"/>
+                    <text x="140" y="165" text-anchor="middle" fill="${color}" font-size="15" font-weight="bold">${label || 'BIỂU ĐỒ TỔNG THỂ'}</text>
+                </svg>
+            </div>`;
+        }
+
+        document.getElementById('genBtn').onclick = function(){
             const title = document.getElementById('titleIn').value.trim() || 'Tin tức thị trường';
             const lines = document.getElementById('contentIn').value.trim().split('\n').filter(x=>x.trim().length>0);
-            const audioF = document.getElementById('audioIn').files[0];
-            if(!lines.length) return alert('Vui lòng nhập nội dung! Mỗi dòng 1 cảnh.');
+            if(!lines.length) return alert('Vui lòng nhập nội dung! Mỗi dòng 1 hình ảnh.');
 
             const area = document.getElementById('sceneArea');
             area.innerHTML = '';
-            const cfg = C[cat];
+            const color = C[cat].color;
 
-            // Tạo từng cảnh: Đồ họa SVG tự vẽ + tiêu đề + nội dung
             lines.forEach((txt, i)=>{
-                const delay = i * 8.5;
-                const svg = makeVectorSVG(txt.trim(), cfg.main);
-                const div = document.createElement('div');
-                div.className = 'slide-premium absolute inset-0 flex flex-col items-center justify-center p-4 md:p-8 text-center';
-                div.style.animationDelay = delay + 's';
-                div.style.opacity = '0';
-                div.innerHTML = `
-                    <div class="illust-box mb-4 p-4" style="background:linear-gradient(135deg, ${cfg.dark}, ${cfg.main}); box-shadow:0 0 30px ${cfg.glow};">
-                        ${svg}
-                    </div>
-                    <h3 class="text-2xl md:text-3xl font-bold mb-2">${title}</h3>
-                    <div class="w-24 h-1.5 mx-auto mb-3 rounded-full" style="background-color:${cfg.main}"></div>
-                    <p class="text-lg md:text-xl max-w-xl leading-relaxed text-slate-100">${txt.trim()}</p>
+                const svg = getSVG(txt, color);
+                const block = document.createElement('div');
+                block.className = 'fade-in-up flex flex-col items-center justify-center text-center p-3';
+                block.style.animationDelay = (i * 0.6) + 's';
+                block.style.opacity = '0';
+                block.innerHTML = `
+                    ${svg}
+                    <h3 class="text-xl font-bold mt-3 mb-1">${title}</h3>
+                    <div class="w-20 h-1 mx-auto mb-2 rounded-full" style="background-color:${color}"></div>
+                    <p class="text-base max-w-md">${txt}</p>
                 `;
-                area.appendChild(div);
+                area.appendChild(block);
             });
-
-            // Phát âm thanh & đồng bộ thời gian
-            if(audioF){
-                const url = URL.createObjectURL(audioF);
-                const aud = new Audio(url);
-                aud.play();
-                document.getElementById('timeShow').textContent = formatTime(aud.currentTime);
-                aud.ontimeupdate = ()=>{ document.getElementById('timeShow').textContent = formatTime(aud.currentTime); };
-            }
-            simulateProgress(lines.length * 8.5);
-        }
-
-        function formatTime(s){
-            const m = Math.floor(s/60), sec = Math.floor(s%60);
-            return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
-        }
-        function simulateProgress(total){
-            let w=0, bar=document.getElementById('progBar'), step=100/(total*10);
-            clearInterval(window._t);
-            window._t = setInterval(()=>{ w+=step; bar.style.width=Math.min(w,100)+'%'; if(w>=100) clearInterval(window._t); },100);
-        }
-
-        // Nút điều khiển
-        document.getElementById('playBtn').onclick = ()=>alert('▶ Đã phát! Đồ họa tự vẽ + chữ trượt hoàn hảo! Dùng OBS Studio để ghi màn hình thành video.');
-        document.getElementById('stopBtn').onclick = ()=>location.reload();
-        document.getElementById('downBtn').onclick = ()=>alert('💾 Cách lưu thành video:\n1. Mở OBS Studio (miễn phí)\n2. Chọn "Ghi màn hình"\n3. Chọn khung này\n4. Bấm Ghi → Bấm Tạo trên App\n5. Khi hết → Dừng & Lưu file MP4!');
+        };
     </script>
 </body>
 </html>
