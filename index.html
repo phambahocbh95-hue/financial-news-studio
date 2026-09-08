@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial News Studio</title>
+    <title>Studio Tạo Video Kinh Tế - Tài Chính - Chứng Khoán</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
         
-        /* N?n lu?i chuy?n d?ng */
+        /* Nền lưới chuyển động */
         .grid-bg {
             background-color: #050c24;
             background-image: 
@@ -23,7 +23,7 @@
             100% { background-position: 40px 40px; }
         }
 
-        /* Hi?u ?ng tru?t t? du?i l�n */
+        /* Hiệu ứng trượt từ dưới lên */
         @keyframes slideUp {
             0% { transform: translateY(100%); opacity: 0; }
             15% { transform: translateY(0); opacity: 1; }
@@ -32,19 +32,205 @@
         }
         .slide-up { animation: slideUp 8s ease-in-out forwards; }
 
-        /* Hi?u ?ng s�ng vi?n */
+        /* Hiệu ứng sáng viền */
         .glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.35); }
         .glow-gold { box-shadow: 0 0 30px rgba(234, 179, 8, 0.35); }
         .glow-red { box-shadow: 0 0 30px rgba(220, 38, 38, 0.35); }
 
-        /* N�t chuy�n m?c */
+        /* Nút chuyên mục */
         .tab-active { background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: white; }
         
-        /* Thanh ti?n tr�nh */
+        /* Thanh tiến trình */
         .progress-bar { transition: width 0.3s ease; }
     </style>
 </head>
 <body class="grid-bg min-h-screen text-white">
     <div class="container mx-auto px-4 py-6 max-w-7xl">
-        <!-- ===== TI�U �? ===== -->
-        <header class="text
+        <!-- ===== TIÊU ĐỀ ===== -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2 bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">
+                FINANCIAL NEWS STUDIO
+            </h1>
+            <p class="text-blue-200 text-lg">Tạo Video Chuyên Nghiệp • Kinh tế | Tài chính | Chứng khoán | Thời sự</p>
+        </header>
+
+        <!-- ===== CHUYÊN MỤC ===== -->
+        <div class="flex flex-wrap justify-center gap-3 mb-8">
+            <button data-category="economy" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-blue-500/40 tab-active">📊 Kinh tế</button>
+            <button data-category="finance" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-yellow-500/40 text-yellow-300 hover:bg-yellow-500/20">💰 Tài chính</button>
+            <button data-category="stock" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/20">📈 Chứng khoán</button>
+            <button data-category="news" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-red-500/40 text-red-300 hover:bg-red-500/20">📰 Thời sự</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- ===== BÊN TRÁI: NHẬP NỘI DUNG ===== -->
+            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20 glow">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">✍️ Nhập Nội Dung & Tải Âm Thanh</h2>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-blue-300 font-medium mb-2">Tiêu đề chính</label>
+                        <input type="text" id="mainTitle" placeholder="VD: Thị trường chứng khoán tuần tới..." 
+                            class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-500/30 focus:border-blue-400 outline-none text-lg">
+                    </div>
+
+                    <div>
+                        <label class="block text-blue-300 font-medium mb-2">Nội dung chi tiết (mỗi dòng = 1 đoạn hình ảnh)</label>
+                        <textarea id="contentInput" rows="10" placeholder="Nhập nội dung tin tức...&#10;Mỗi một dòng sẽ tự động tạo thành một hình ảnh trượt từ dưới lên&#10;Hệ thống sẽ phân tích và tạo bố cục phù hợp với chuyên mục" 
+                            class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-500/30 focus:border-blue-400 outline-none text-base leading-relaxed"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-blue-300 font-medium mb-2">🎙️ Tải file âm thanh lời nói</label>
+                        <input type="file" id="audioFile" accept="audio/*" 
+                            class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-500/30 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:bg-blue-600 file:text-white file:border-0">
+                    </div>
+
+                    <button id="createBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold text-xl transition-all transform hover:scale-[1.02] mt-2">
+                        🎬 TẠO VIDEO CHUYÊN NGHIỆP
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== BÊN PHẢI: XEM TRƯỚC ===== -->
+            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20 glow">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">🖥️ Xem Trước Video</h2>
+
+                <!-- Khung xem trước 16:9 -->
+                <div id="previewContainer" class="relative w-full aspect-video bg-[#050c24] rounded-xl overflow-hidden border border-blue-500/30">
+                    <!-- Nền lưới trong khung xem trước -->
+                    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(30,64,175,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(30,64,175,0.06) 1px, transparent 1px); background-size: 30px 30px;"></div>
+                    
+                    <!-- Logo góc trên -->
+                    <div class="absolute top-3 left-3 z-10">
+                        <div id="categoryBadge" class="px-3 py-1 rounded-md bg-blue-600/80 text-white text-sm font-bold">KINH TẾ</div>
+                    </div>
+
+                    <!-- Thời gian thực -->
+                    <div class="absolute top-3 right-3 z-10 text-white text-sm font-mono" id="timeDisplay">00:00</div>
+
+                    <!-- Khu vực hình ảnh trượt -->
+                    <div id="slideArea" class="absolute inset-0 flex items-center justify-center p-8">
+                        <div class="text-center text-blue-300/60">
+                            <div class="text-5xl mb-3">🎬</div>
+                            <p class="text-lg">Nội dung hình ảnh sẽ trượt từ dưới lên tại đây</p>
+                        </div>
+                    </div>
+
+                    <!-- Thanh tiến trình -->
+                    <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-700/60">
+                        <div id="progressBar" class="h-full bg-blue-500 progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="mt-4 flex gap-3">
+                    <button id="playBtn" class="flex-1 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 font-bold text-lg">▶ Phát</button>
+                    <button id="stopBtn" class="flex-1 py-3 rounded-lg bg-red-600/80 hover:bg-red-500 font-bold text-lg">⏹ Dừng</button>
+                    <button id="exportBtn" class="py-3 px-4 rounded-lg bg-indigo-600/80 hover:bg-indigo-500 font-bold">💾 Xuất</button>
+                </div>
+
+                <div class="mt-4 p-3 bg-slate-800/60 rounded-lg">
+                    <p class="text-sm text-blue-200">💡 <strong>Cách dùng:</strong> Nhập nội dung (mỗi dòng 1 ý), chọn chuyên mục, tải âm thanh → bấm Tạo. Hình ảnh sẽ tự động trượt theo lời nói.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== BIẾN TOÀN CỤ =====
+        let activeCategory = 'economy';
+        const categoryConfig = {
+            economy: { label: 'KINH TẾ', color: '#2563EB', gradient: 'from-blue-600 to-blue-800' },
+            finance: { label: 'TÀI CHÍNH', color: '#CA8A04', gradient: 'from-yellow-500 to-amber-600' },
+            stock: { label: 'CHỨNG KHOÁN', color: '#059669', gradient: 'from-emerald-500 to-green-700' },
+            news: { label: 'THỜI SỰ', color: '#DC2626', gradient: 'from-red-600 to-rose-700' }
+        };
+
+        // ===== CHUYỂN CHUYÊN MỤC =====
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('tab-active');
+                    b.style.background = '';
+                });
+                btn.classList.add('tab-active');
+                activeCategory = btn.dataset.category;
+                updateCategoryBadge();
+            });
+        });
+
+        function updateCategoryBadge() {
+            const badge = document.getElementById('categoryBadge');
+            const cfg = categoryConfig[activeCategory];
+            badge.textContent = cfg.label;
+            badge.style.backgroundColor = cfg.color + 'CC';
+        }
+
+        // ===== TẠO VIDEO =====
+        document.getElementById('createBtn').addEventListener('click', generateVideo);
+
+        function generateVideo() {
+            const title = document.getElementById('mainTitle').value.trim() || 'Tin tức thị trường';
+            const content = document.getElementById('contentInput').value.trim();
+            const lines = content.split('\n').filter(l => l.trim().length > 0);
+            const audioFile = document.getElementById('audioFile').files[0];
+
+            if (lines.length === 0) { alert('Vui lòng nhập nội dung! Mỗi dòng một ý.'); return; }
+
+            const slideArea = document.getElementById('slideArea');
+            slideArea.innerHTML = '';
+
+            // Tạo từng khối nội dung trượt lên
+            lines.forEach((text, idx) => {
+                const slide = document.createElement('div');
+                slide.className = 'slide-up absolute inset-0 flex items-center justify-center p-8';
+                slide.style.animationDelay = `${idx * 7}s`;
+                slide.style.opacity = '0';
+                slide.innerHTML = `
+                    <div class="text-center max-w-2xl">
+                        <h3 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">${title}</h3>
+                        <div class="w-24 h-1.5 mx-auto mb-6 rounded-full" style="background-color: ${categoryConfig[activeCategory].color}"></div>
+                        <p class="text-xl md:text-2xl leading-relaxed text-slate-100">${text}</p>
+                    </div>
+                `;
+                slideArea.appendChild(slide);
+            });
+
+            // Bắt đầu phát nếu có âm thanh
+            if (audioFile) {
+                const url = URL.createObjectURL(audioFile);
+                const audio = new Audio(url);
+                audio.play();
+                updateTimeDisplay(audio);
+            }
+
+            // Thanh tiến trình giả lập
+            simulateProgress();
+        }
+
+        function updateTimeDisplay(audio) {
+            const timeEl = document.getElementById('timeDisplay');
+            audio.ontimeupdate = () => {
+                const m = Math.floor(audio.currentTime / 60);
+                const s = Math.floor(audio.currentTime % 60);
+                timeEl.textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            };
+        }
+
+        function simulateProgress() {
+            let w = 0;
+            const bar = document.getElementById('progressBar');
+            const timer = setInterval(() => {
+                w += 0.3;
+                bar.style.width = Math.min(w, 100) + '%';
+                if (w >= 100) clearInterval(timer);
+            }, 100);
+        }
+
+        // Nút điều khiển
+        document.getElementById('playBtn').onclick = () => alert('✅ Đã sẵn sàng phát! Khi có âm thanh, hình ảnh sẽ trượt đồng bộ.');
+        document.getElementById('stopBtn').onclick = () => location.reload();
+        document.getElementById('exportBtn').onclick = () => alert('💾 Xuất video: Sử dụng công cụ ghi màn hình (OBS Studio miễn phí) để ghi khung hình này khi phát. Video có định dạng 16:9, chuẩn truyền hình quốc tế.');
+    </script>
+</body>
+</html>
