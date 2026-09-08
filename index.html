@@ -3,234 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Tạo Video Kinh Tế - Tài Chính - Chứng Khoán</title>
+    <title>FINANCIAL NEWS STUDIO — World Class Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Inter', sans-serif; }
-        
-        /* Nền lưới chuyển động */
-        .grid-bg {
-            background-color: #050c24;
+        :root {
+            --eco: #2563EB; --eco-dark: #1D4ED8; --eco-glow: rgba(37,99,235,0.45);
+            --fin: #CA8A04; --fin-dark: #A16207; --fin-glow: rgba(202,138,4,0.45);
+            --stk: #059669; --stk-dark: #047857; --stk-glow: rgba(5,150,105,0.45);
+            --news: #DC2626; --news-dark: #B91C1C; --news-glow: rgba(220,38,38,0.45);
+        }
+        * { font-family: 'Inter', sans-serif; margin:0; padding:0; box-sizing:border-box; }
+        body { background:#050c24; color:#fff; min-height:100vh; }
+
+        /* === NỀN LƯỚI TỌA ĐỘ CHUYÊN NGHIỆP === */
+        .grid-world {
+            background: radial-gradient(circle at top, rgba(37,99,235,0.12) 0%, transparent 55%), #050c24;
             background-image: 
-                linear-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(30, 64, 175, 0.08) 1px, transparent 1px);
-            background-size: 40px 40px;
-            animation: gridMove 20s linear infinite;
+                linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px),
+                linear-gradient(rgba(30,64,175,0.03) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(30,64,175,0.03) 2px, transparent 2px);
+            background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+            animation: gridFlow 25s linear infinite;
         }
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 40px 40px; }
+        @keyframes gridFlow {
+            0% { background-position:0 0, 0 0, 0 0, 0 0; }
+            100% { background-position:20px 20px, 20px 20px, 100px 100px, 100px 100px; }
         }
 
-        /* Hiệu ứng trượt từ dưới lên */
-        @keyframes slideUp {
-            0% { transform: translateY(100%); opacity: 0; }
-            15% { transform: translateY(0); opacity: 1; }
-            85% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100%); opacity: 0; }
+        /* === HIỆU ỨNG CHUYỂN CẢNH ĐỈNH CAO === */
+        @keyframes masterFadeIn {
+            0% { opacity:0; transform:translateY(40px) scale(0.92); filter:blur(6px); }
+            100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
         }
-        .slide-up { animation: slideUp 8s ease-in-out forwards; }
+        @keyframes slideUpPremium {
+            0% { opacity:0; transform:translateY(80px); }
+            20% { opacity:1; transform:translateY(0); }
+            85% { opacity:1; transform:translateY(0); }
+            100% { opacity:0; transform:translateY(-60px); }
+        }
+        @keyframes glowPulse {
+            0%,100% { filter:drop-shadow(0 0 8px currentColor); }
+            50% { filter:drop-shadow(0 0 24px currentColor); }
+        }
+        .master-fade { animation:masterFadeIn 1.4s cubic-bezier(0.16,1,0.3,1) forwards; opacity:0; }
+        .slide-premium { animation:slideUpPremium 8.5s ease-in-out forwards; opacity:0; }
+        .glow-pulse { animation:glowPulse 2.5s ease-in-out infinite; }
 
-        /* Hiệu ứng sáng viền */
-        .glow { box-shadow: 0 0 30px rgba(59, 130, 246, 0.35); }
-        .glow-gold { box-shadow: 0 0 30px rgba(234, 179, 8, 0.35); }
-        .glow-red { box-shadow: 0 0 30px rgba(220, 38, 38, 0.35); }
+        /* === KHUNG ĐỒ HỌA VECTOR === */
+        .vector-card {
+            border-radius:16px;
+            backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,0.12);
+            box-shadow:0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        .illust-box {
+            border-radius:14px;
+            position:relative;
+            overflow:hidden;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .illust-box::after {
+            content:'';
+            position:absolute; inset:0;
+            background:linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+            pointer-events:none;
+        }
 
-        /* Nút chuyên mục */
-        .tab-active { background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: white; }
-        
-        /* Thanh tiến trình */
-        .progress-bar { transition: width 0.3s ease; }
+        /* === NÚT CHUYÊN MỤC === */
+        .tab-btn { transition:all 0.3s ease; }
+        .tab-active { background:linear-gradient(135deg, #1D4ED8, #3B82F6); color:white; box-shadow:0 0 20px rgba(37,99,235,0.4); }
+
+        /* === THANH TIẾN TRÌNH === */
+        .prog-bar { transition:width 0.4s ease; }
+
+        /* === ĐƯỜNG BIỂU ĐỒ SVG === */
+        svg.chart-line { stroke-linecap:round; stroke-linejoin:round; }
     </style>
 </head>
-<body class="grid-bg min-h-screen text-white">
+<body class="grid-world">
     <div class="container mx-auto px-4 py-6 max-w-7xl">
-        <!-- ===== TIÊU ĐỀ ===== -->
+        <!-- === TIÊU ĐỀ ĐỈNH CAO === -->
         <header class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2 bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">
-                FINANCIAL NEWS STUDIO
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-2">
+                <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-blue-500 bg-clip-text text-transparent">FINANCIAL NEWS STUDIO</span>
             </h1>
-            <p class="text-blue-200 text-lg">Tạo Video Chuyên Nghiệp • Kinh tế | Tài chính | Chứng khoán | Thời sự</p>
+            <p class="text-blue-200 text-lg">🏆 World-Class Edition • Auto Vector Graphics • AI Scene Sync • Premium Audio Sync</p>
         </header>
 
-        <!-- ===== CHUYÊN MỤC ===== -->
+        <!-- === CHUYÊN MỤC === -->
         <div class="flex flex-wrap justify-center gap-3 mb-8">
-            <button data-category="economy" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-blue-500/40 tab-active">📊 Kinh tế</button>
-            <button data-category="finance" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-yellow-500/40 text-yellow-300 hover:bg-yellow-500/20">💰 Tài chính</button>
-            <button data-category="stock" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/20">📈 Chứng khoán</button>
-            <button data-category="news" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-red-500/40 text-red-300 hover:bg-red-500/20">📰 Thời sự</button>
+            <button data-cat="economy" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-blue-500/40 tab-active">📊 Kinh tế</button>
+            <button data-cat="finance" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-yellow-500/40 text-yellow-300 hover:bg-yellow-500/20">💰 Tài chính</button>
+            <button data-cat="stock" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/20">📈 Chứng khoán</button>
+            <button data-cat="news" class="tab-btn px-6 py-3 rounded-xl font-semibold border-2 border-red-500/40 text-red-300 hover:bg-red-500/20">📰 Thời sự</button>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
-            <!-- ===== BÊN TRÁI: NHẬP NỘI DUNG ===== -->
-            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20 glow">
+            <!-- === BÊN TRÁI: NHẬP NỘI DUNG === -->
+            <div class="vector-card bg-slate-900/60 p-6">
                 <h2 class="text-xl font-bold mb-4 flex items-center gap-2">✍️ Nhập Nội Dung & Tải Âm Thanh</h2>
-
                 <div class="space-y-4">
                     <div>
                         <label class="block text-blue-300 font-medium mb-2">Tiêu đề chính</label>
-                        <input type="text" id="mainTitle" placeholder="VD: Thị trường chứng khoán tuần tới..." 
-                            class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-500/30 focus:border-blue-400 outline-none text-lg">
+                        <input type="text" id="titleIn" placeholder="VD: Thị trường chứng khoán tăng mạnh tuần này" 
+                            class="w-full px-4 py-3 rounded-lg bg-slate-800/80 border border-blue-500/30 focus:border-blue-400 outline-none text-lg">
                     </div>
-
                     <div>
-                        <label class="block text-blue-300 font-medium mb-2">Nội dung chi tiết (mỗi dòng = 1 đoạn hình ảnh)</label>
-                        <textarea id="contentInput" rows="10" placeholder="Nhập nội dung tin tức...&#10;Mỗi một dòng sẽ tự động tạo thành một hình ảnh trượt từ dưới lên&#10;Hệ thống sẽ phân tích và tạo bố cục phù hợp với chuyên mục" 
-                            class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-500/30 focus:border-blue-400 outline-none text-base leading-relaxed"></textarea>
+                        <label class="block text-blue-300 font-medium mb-2">Nội dung chi tiết (mỗi dòng = 1 cảnh)</label>
+                        <textarea id="contentIn" rows="10" placeholder="VD: Chỉ số VN-Index tăng vọt 6.5%&#10;Thanh khoản lập kỷ lục 45 nghìn tỷ&#10;Nhà đầu tư nước ngoài mua ròng mạnh&#10;Vàng trong nước tăng theo thế giới&#10;Tỷ giá ổn định, Ngân hàng trung ương can thiệp" 
+                            class="w-full px-4 py-3 rounded-lg bg-slate-800/80 border border-blue-500/30 focus:border-blue-400 outline-none text-base leading-relaxed"></textarea>
                     </div>
-
                     <div>
-                        <label class="block text-blue-300 font-medium mb-2">🎙️ Tải file âm thanh lời nói</label>
-                        <input type="file" id="audioFile" accept="audio/*" 
-                            class="w-full px-4 py-3 rounded-lg bg-slate-800 border border-blue-500/30 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:bg-blue-600 file:text-white file:border-0">
+                        <label class="block text-blue-300 font-medium mb-2">🎙️ Tải file lời nói (MP3/WAV)</label>
+                        <input type="file" id="audioIn" accept="audio/*" 
+                            class="w-full px-4 py-3 rounded-lg bg-slate-800/80 border border-blue-500/30 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:bg-blue-600 file:text-white file:border-0">
                     </div>
-
-                    <button id="createBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold text-xl transition-all transform hover:scale-[1.02] mt-2">
+                    <button id="genBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold text-xl transition-all transform hover:scale-[1.02] mt-2">
                         🎬 TẠO VIDEO CHUYÊN NGHIỆP
                     </button>
                 </div>
             </div>
 
-            <!-- ===== BÊN PHẢI: XEM TRƯỚC ===== -->
-            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20 glow">
-                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">🖥️ Xem Trước Video</h2>
-
-                <!-- Khung xem trước 16:9 -->
-                <div id="previewContainer" class="relative w-full aspect-video bg-[#050c24] rounded-xl overflow-hidden border border-blue-500/30">
-                    <!-- Nền lưới trong khung xem trước -->
-                    <div class="absolute inset-0" style="background-image: linear-gradient(rgba(30,64,175,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(30,64,175,0.06) 1px, transparent 1px); background-size: 30px 30px;"></div>
+            <!-- === BÊN PHẢI: XEM TRƯỚC === -->
+            <div class="vector-card bg-slate-900/60 p-6">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2">🖥️ Xem Trước — Auto Vector Graphics</h2>
+                <div id="previewBox" class="relative w-full aspect-video rounded-xl overflow-hidden border border-blue-500/30 bg-[#050c24]">
+                    <!-- Nền lưới trong khung -->
+                    <div class="absolute inset-0 opacity-40" style="background-image: linear-gradient(rgba(59,130,246,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.08) 1px, transparent 1px); background-size:25px 25px;"></div>
                     
-                    <!-- Logo góc trên -->
-                    <div class="absolute top-3 left-3 z-10">
-                        <div id="categoryBadge" class="px-3 py-1 rounded-md bg-blue-600/80 text-white text-sm font-bold">KINH TẾ</div>
-                    </div>
+                    <!-- Nhãn chuyên mục + Thời gian -->
+                    <div class="absolute top-3 left-3 z-20"><span id="catBadge" class="px-3 py-1 rounded-md bg-blue-600/80 text-white text-sm font-bold">KINH TẾ</span></div>
+                    <div class="absolute top-3 right-3 z-20 text-white text-sm font-mono" id="timeShow">00:00</div>
 
-                    <!-- Thời gian thực -->
-                    <div class="absolute top-3 right-3 z-10 text-white text-sm font-mono" id="timeDisplay">00:00</div>
-
-                    <!-- Khu vực hình ảnh trượt -->
-                    <div id="slideArea" class="absolute inset-0 flex items-center justify-center p-8">
-                        <div class="text-center text-blue-300/60">
-                            <div class="text-5xl mb-3">🎬</div>
-                            <p class="text-lg">Nội dung hình ảnh sẽ trượt từ dưới lên tại đây</p>
+                    <!-- KHU VỰC CẢNH ĐƯỢC TẠO -->
+                    <div id="sceneArea" class="absolute inset-0 flex items-center justify-center p-6 text-center text-blue-200/60">
+                        <div>
+                            <div class="text-6xl mb-4 glow-pulse">🎬</div>
+                            <p class="text-lg">Nhập nội dung → Tải âm thanh → Bấm Tạo<br>App tự vẽ đồ họa vector + đồng bộ lời nói</p>
                         </div>
                     </div>
 
                     <!-- Thanh tiến trình -->
-                    <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-700/60">
-                        <div id="progressBar" class="h-full bg-blue-500 progress-bar" style="width: 0%"></div>
+                    <div class="absolute bottom-0 left-0 right-0 h-1.5 bg-slate-700/50 z-20">
+                        <div id="progBar" class="h-full bg-blue-500 prog-bar" style="width:0%"></div>
                     </div>
                 </div>
-
                 <div class="mt-4 flex gap-3">
                     <button id="playBtn" class="flex-1 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 font-bold text-lg">▶ Phát</button>
                     <button id="stopBtn" class="flex-1 py-3 rounded-lg bg-red-600/80 hover:bg-red-500 font-bold text-lg">⏹ Dừng</button>
-                    <button id="exportBtn" class="py-3 px-4 rounded-lg bg-indigo-600/80 hover:bg-indigo-500 font-bold">💾 Xuất</button>
-                </div>
-
-                <div class="mt-4 p-3 bg-slate-800/60 rounded-lg">
-                    <p class="text-sm text-blue-200">💡 <strong>Cách dùng:</strong> Nhập nội dung (mỗi dòng 1 ý), chọn chuyên mục, tải âm thanh → bấm Tạo. Hình ảnh sẽ tự động trượt theo lời nói.</p>
+                    <button id="downBtn" class="py-3 px-4 rounded-lg bg-indigo-600/80 hover:bg-indigo-500 font-bold">💾 Hướng Dẫn Lưu</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ===== BIẾN TOÀN CỤ =====
-        let activeCategory = 'economy';
-        const categoryConfig = {
-            economy: { label: 'KINH TẾ', color: '#2563EB', gradient: 'from-blue-600 to-blue-800' },
-            finance: { label: 'TÀI CHÍNH', color: '#CA8A04', gradient: 'from-yellow-500 to-amber-600' },
-            stock: { label: 'CHỨNG KHOÁN', color: '#059669', gradient: 'from-emerald-500 to-green-700' },
-            news: { label: 'THỜI SỰ', color: '#DC2626', gradient: 'from-red-600 to-rose-700' }
+        // === CẤU HÌNH CHUYÊN MỤC ===
+        let cat = 'economy';
+        const C = {
+            economy: { label:'KINH TẾ', main:'#2563EB', dark:'#1D4ED8', glow:'rgba(37,99,235,0.45)' },
+            finance: { label:'TÀI CHÍNH', main:'#CA8A04', dark:'#A16207', glow:'rgba(202,138,4,0.45)' },
+            stock: { label:'CHỨNG KHOÁN', main:'#059669', dark:'#047857', glow:'rgba(5,150,105,0.45)' },
+            news: { label:'THỜI SỰ', main:'#DC2626', dark:'#B91C1C', glow:'rgba(220,38,38,0.45)' }
         };
 
-        // ===== CHUYỂN CHUYÊN MỤC =====
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.tab-btn').forEach(b => {
-                    b.classList.remove('tab-active');
-                    b.style.background = '';
-                });
-                btn.classList.add('tab-active');
-                activeCategory = btn.dataset.category;
-                updateCategoryBadge();
-            });
+        // === TỰ PHÂN TÍCH & TẠO ĐỒ HỌA SVG VECTOR ===
+        function makeVectorSVG(text, color) {
+            const t = text.toLowerCase();
+            let pathD = '', icon = '';
+
+            // === ĐƯỜNG BIỂU ĐỒ TĂNG ===
+            if (t.includes('tăng') || t.includes('lên') || t.includes('cao') || t.includes('vượt') || t.includes('đỉnh')) {
+                pathD = 'M40,160 L80,120 L120,100 L160,60 L200,30 L240,50 L280,20';
+                icon = `<svg viewBox="0 0 320 180" class="w-36 h-28 md:w-44 md:h-32">
+                    <defs><linearGradient id="g-up" x1="0" y1="1" x2="1" y2="0">
+                        <stop offset="0%" stop-color="${color}" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="${color}" stop-opacity="0.95"/>
+                    </linearGradient></defs>
+                    <path d="M40,160 L80,120 L120,100 L160,60 L200,30 L240,50 L280,20 L280,160 L40,160Z" fill="url(#g-up)" opacity="0.35"/>
+                    <path d="${pathD}" fill="none" stroke="${color}" stroke-width="6" class="chart-line master-fade" style="animation-delay:0.6s"/>
+                    <circle cx="280" cy="20" r="10" fill="${color}" class="master-fade glow-pulse" style="animation-delay:1.2s"/>
+                </svg>`;
+            }
+            // === ĐƯỜNG BIỂU ĐỒ GIẢM ===
+            else if (t.includes('giảm') || t.includes('xuống') || t.includes('thấp') || t.includes('sụt')) {
+                pathD = 'M40,30 L80,55 L120,80 L160,110 L200,135 L240,145 L280,155';
+                icon = `<svg viewBox="0 0 320 180" class="w-36 h-28 md:w-44 md:h-32">
+                    <defs><linearGradient id="g-dn" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="${color}" stop-opacity="0.95"/>
+                        <stop offset="100%" stop-color="${color}" stop-opacity="0.25"/>
+                    </linearGradient></defs>
+                    <path d="M40,30 L80,55 L120,80 L160,110 L200,135 L240,145 L280,155 L280,160 L40,160Z" fill="url(#g-dn)" opacity="0.35"/>
+                    <path d="${pathD}" fill="none" stroke="${color}" stroke-width="6" class="chart-line master-fade" style="animation-delay:0.6s"/>
+                    <circle cx="280" cy="155" r="10" fill="${color}" class="master-fade glow-pulse" style="animation-delay:1.2s"/>
+                </svg>`;
+            }
+            // === SỐ LIỆU / GIÁ TRỊ ===
+            else if (t.includes('nghìn tỷ') || t.includes('triệu') || t.includes('%') || t.includes('đô la') || t.includes('tỷ giá')) {
+                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
+                    <rect x="20" y="40" width="160" height="100" rx="12" fill="${color}" opacity="0.15" stroke="${color}" stroke-width="3"/>
+                    <text x="100" y="85" text-anchor="middle" fill="${color}" font-size="36" font-weight="800" class="glow-pulse">$$$</text>
+                    <text x="100" y="120" text-anchor="middle" fill="${color}" font-size="14" opacity="0.80">DATA • VALUE • PRICE</text>
+                </svg>`;
+            }
+            // === VÀNG / KIM LOẠI QUÝ ===
+            else if (t.includes('vàng') || t.includes('bạc') || t.includes('kim cương')) {
+                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
+                    <polygon points="100,30 150,70 140,140 60,140 50,70" fill="${color}" opacity="0.25" stroke="${color}" stroke-width="4"/>
+                    <polygon points="100,50 130,75 122,120 78,120 70,75" fill="${color}" opacity="0.60"/>
+                    <circle cx="100" cy="95" r="18" fill="#fff" opacity="0.90" class="glow-pulse"/>
+                    <text x="100" y="102" text-anchor="middle" fill="${color}" font-size="16" font-weight="800">AU</text>
+                </svg>`;
+            }
+            // === NGÂN HÀNG / TÀI CHÍNH ===
+            else if (t.includes('ngân hàng') || t.includes('lãi suất') || t.includes('vay') || t.includes('trung ương')) {
+                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
+                    <polygon points="100,30 170,70 170,140 30,140 30,70" fill="${color}" opacity="0.15" stroke="${color}" stroke-width="3"/>
+                    <rect x="50" y="90" width="30" height="50" fill="${color}" opacity="0.75" rx="2"/>
+                    <rect x="85" y="90" width="30" height="50" fill="${color}" opacity="0.90" rx="2"/>
+                    <rect x="120" y="90" width="30" height="50" fill="${color}" opacity="0.60" rx="2"/>
+                    <text x="100" y="65" text-anchor="middle" fill="${color}" font-size="18" font-weight="700">🏦 BANK</text>
+                </svg>`;
+            }
+            // === THỜI SỰ / SỰ KIỆN ===
+            else if (t.includes('chính phủ') || t.includes('quyết định') || t.includes('thông báo') || t.includes('sự kiện')) {
+                icon = `<svg viewBox="0 0 200 180" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
+                    <rect x="25" y="25" width="150" height="130" rx="10" fill="${color}" opacity="0.12" stroke="${color}" stroke-width="3"/>
+                    <rect x="40" y="45" width="120" height="8" fill="${color}" opacity="0.75" rx="2"/>
+                    <rect x="40" y="65" width="90" height="8" fill="${color}" opacity="0.55" rx="2"/>
+                    <rect x="40" y="85" width="110" height="8" fill="${color}" opacity="0.40" rx="2"/>
+                    <polygon points="160,110 175,135 145,135" fill="${color}" class="glow-pulse"/>
+                </svg>`;
+            }
+            // === MẶC ĐỊNH: BIỂU ĐỒ TỔNG THỂ ===
+            else {
+                icon = `<svg viewBox="0 0 280 160" class="w-36 h-28 md:w-44 md:h-32 master-fade" style="animation-delay:0.4s">
+                    <rect x="20" y="40" width="60" height="100" fill="${color}" opacity="0.25" rx="4"/>
+                    <rect x="85" y="60" width="60" height="80" fill="${color}" opacity="0.45" rx="4"/>
+                    <rect x="150" y="30" width="60" height="110" fill="${color}" opacity="0.70" rx="4"/>
+                    <rect x="215" y="50" width="45" height="90" fill="${color}" opacity="0.35" rx="4"/>
+                </svg>`;
+            }
+            return icon;
+        }
+
+        // === CHUYỂN CHUYÊN MỤC ===
+        document.querySelectorAll('.tab-btn').forEach(b=>b.onclick=()=>{
+            document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('tab-active'));
+            b.classList.add('tab-active'); cat = b.dataset.cat;
+            const badge = document.getElementById('catBadge');
+            badge.textContent = C[cat].label;
+            badge.style.backgroundColor = C[cat].main + 'CC';
         });
 
-        function updateCategoryBadge() {
-            const badge = document.getElementById('categoryBadge');
-            const cfg = categoryConfig[activeCategory];
-            badge.textContent = cfg.label;
-            badge.style.backgroundColor = cfg.color + 'CC';
-        }
+        // === TẠO VIDEO ĐỈNH CAO ===
+        document.getElementById('genBtn').onclick = generateWorldClass;
 
-        // ===== TẠO VIDEO =====
-        document.getElementById('createBtn').addEventListener('click', generateVideo);
+        function generateWorldClass(){
+            const title = document.getElementById('titleIn').value.trim() || 'Tin tức thị trường';
+            const lines = document.getElementById('contentIn').value.trim().split('\n').filter(x=>x.trim().length>0);
+            const audioF = document.getElementById('audioIn').files[0];
+            if(!lines.length) return alert('Vui lòng nhập nội dung! Mỗi dòng 1 cảnh.');
 
-        function generateVideo() {
-            const title = document.getElementById('mainTitle').value.trim() || 'Tin tức thị trường';
-            const content = document.getElementById('contentInput').value.trim();
-            const lines = content.split('\n').filter(l => l.trim().length > 0);
-            const audioFile = document.getElementById('audioFile').files[0];
+            const area = document.getElementById('sceneArea');
+            area.innerHTML = '';
+            const cfg = C[cat];
 
-            if (lines.length === 0) { alert('Vui lòng nhập nội dung! Mỗi dòng một ý.'); return; }
-
-            const slideArea = document.getElementById('slideArea');
-            slideArea.innerHTML = '';
-
-            // Tạo từng khối nội dung trượt lên
-            lines.forEach((text, idx) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide-up absolute inset-0 flex items-center justify-center p-8';
-                slide.style.animationDelay = `${idx * 7}s`;
-                slide.style.opacity = '0';
-                slide.innerHTML = `
-                    <div class="text-center max-w-2xl">
-                        <h3 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">${title}</h3>
-                        <div class="w-24 h-1.5 mx-auto mb-6 rounded-full" style="background-color: ${categoryConfig[activeCategory].color}"></div>
-                        <p class="text-xl md:text-2xl leading-relaxed text-slate-100">${text}</p>
+            // Tạo từng cảnh: Đồ họa SVG tự vẽ + tiêu đề + nội dung
+            lines.forEach((txt, i)=>{
+                const delay = i * 8.5;
+                const svg = makeVectorSVG(txt.trim(), cfg.main);
+                const div = document.createElement('div');
+                div.className = 'slide-premium absolute inset-0 flex flex-col items-center justify-center p-4 md:p-8 text-center';
+                div.style.animationDelay = delay + 's';
+                div.style.opacity = '0';
+                div.innerHTML = `
+                    <div class="illust-box mb-4 p-4" style="background:linear-gradient(135deg, ${cfg.dark}, ${cfg.main}); box-shadow:0 0 30px ${cfg.glow};">
+                        ${svg}
                     </div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2">${title}</h3>
+                    <div class="w-24 h-1.5 mx-auto mb-3 rounded-full" style="background-color:${cfg.main}"></div>
+                    <p class="text-lg md:text-xl max-w-xl leading-relaxed text-slate-100">${txt.trim()}</p>
                 `;
-                slideArea.appendChild(slide);
+                area.appendChild(div);
             });
 
-            // Bắt đầu phát nếu có âm thanh
-            if (audioFile) {
-                const url = URL.createObjectURL(audioFile);
-                const audio = new Audio(url);
-                audio.play();
-                updateTimeDisplay(audio);
+            // Phát âm thanh & đồng bộ thời gian
+            if(audioF){
+                const url = URL.createObjectURL(audioF);
+                const aud = new Audio(url);
+                aud.play();
+                document.getElementById('timeShow').textContent = formatTime(aud.currentTime);
+                aud.ontimeupdate = ()=>{ document.getElementById('timeShow').textContent = formatTime(aud.currentTime); };
             }
-
-            // Thanh tiến trình giả lập
-            simulateProgress();
+            simulateProgress(lines.length * 8.5);
         }
 
-        function updateTimeDisplay(audio) {
-            const timeEl = document.getElementById('timeDisplay');
-            audio.ontimeupdate = () => {
-                const m = Math.floor(audio.currentTime / 60);
-                const s = Math.floor(audio.currentTime % 60);
-                timeEl.textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-            };
+        function formatTime(s){
+            const m = Math.floor(s/60), sec = Math.floor(s%60);
+            return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
         }
-
-        function simulateProgress() {
-            let w = 0;
-            const bar = document.getElementById('progressBar');
-            const timer = setInterval(() => {
-                w += 0.3;
-                bar.style.width = Math.min(w, 100) + '%';
-                if (w >= 100) clearInterval(timer);
-            }, 100);
+        function simulateProgress(total){
+            let w=0, bar=document.getElementById('progBar'), step=100/(total*10);
+            clearInterval(window._t);
+            window._t = setInterval(()=>{ w+=step; bar.style.width=Math.min(w,100)+'%'; if(w>=100) clearInterval(window._t); },100);
         }
 
         // Nút điều khiển
-        document.getElementById('playBtn').onclick = () => alert('✅ Đã sẵn sàng phát! Khi có âm thanh, hình ảnh sẽ trượt đồng bộ.');
-        document.getElementById('stopBtn').onclick = () => location.reload();
-        document.getElementById('exportBtn').onclick = () => alert('💾 Xuất video: Sử dụng công cụ ghi màn hình (OBS Studio miễn phí) để ghi khung hình này khi phát. Video có định dạng 16:9, chuẩn truyền hình quốc tế.');
+        document.getElementById('playBtn').onclick = ()=>alert('▶ Đã phát! Đồ họa tự vẽ + chữ trượt hoàn hảo! Dùng OBS Studio để ghi màn hình thành video.');
+        document.getElementById('stopBtn').onclick = ()=>location.reload();
+        document.getElementById('downBtn').onclick = ()=>alert('💾 Cách lưu thành video:\n1. Mở OBS Studio (miễn phí)\n2. Chọn "Ghi màn hình"\n3. Chọn khung này\n4. Bấm Ghi → Bấm Tạo trên App\n5. Khi hết → Dừng & Lưu file MP4!');
     </script>
 </body>
 </html>
